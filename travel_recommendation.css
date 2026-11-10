@@ -1,0 +1,254 @@
+/* ==========================================================
+   Jom Travel - style.css
+   Palette: deep sea, lagoon, foam, sand, hibiscus
+   Type: Fraunces (headings) + DM Sans (body)
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap");
+
+:root {
+    --deep-sea: #0b2f3a;
+    --lagoon: #17787a;
+    --lagoon-dark: #115c5e;
+    --foam: #e8f4f1;
+    --sand: #f3e6cf;
+    --hibiscus: #c8283f;
+    --hibiscus-dark: #a81f33;
+
+    --font-heading: "Fraunces", Georgia, "Times New Roman", serif;
+    --font-body: "DM Sans", "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------- Page + background image ---------- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-body);
+    color: var(--foam);
+    line-height: 1.6;
+
+    /* Dark overlay keeps text readable on any photo */
+    background-color: var(--deep-sea); /* fallback if image fails to load */
+    background-image:
+        linear-gradient(105deg, rgba(11, 47, 58, 0.88) 0%, rgba(11, 47, 58, 0.45) 55%, rgba(11, 47, 58, 0.15) 100%),
+        url("./background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* ---------- Navbar ---------- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem clamp(1rem, 4vw, 3rem);
+    background: rgba(11, 47, 58, 0.82);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(232, 244, 241, 0.15);
+}
+
+/* Logo sits top-left, directly beside the h1 */
+nav .logo {
+    height: 48px;
+    width: auto;
+    display: block;
+}
+
+nav h1 {
+    margin: 0 auto 0 0; /* auto right margin pushes the menu to the right */
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    color: var(--sand);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    display: inline-block;
+    padding: 0.4rem 0.2rem;
+    color: var(--foam);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover {
+    color: var(--sand);
+    border-bottom-color: var(--sand);
+}
+
+/* ---------- Search box + buttons ---------- */
+#locationInput {
+    width: clamp(11rem, 20vw, 16rem);
+    padding: 0.55rem 0.9rem;
+    font: inherit;
+    color: var(--deep-sea);
+    background: var(--foam);
+    border: 2px solid transparent;
+    border-radius: 999px;
+}
+
+#locationInput::placeholder {
+    color: #5d767d;
+}
+
+button {
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+#btnSearch {
+    padding: 0.5rem 1.1rem;
+    color: #fff;
+    background: var(--lagoon);
+    border: 2px solid var(--lagoon);
+}
+
+#btnSearch:hover {
+    background: var(--lagoon-dark);
+    border-color: var(--lagoon-dark);
+}
+
+#btnReset {
+    padding: 0.5rem 1.1rem;
+    color: var(--foam);
+    background: transparent;
+    border: 2px solid rgba(232, 244, 241, 0.55);
+}
+
+#btnReset:hover {
+    color: var(--deep-sea);
+    background: var(--foam);
+    border-color: var(--foam);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1.25rem;
+    max-width: 44rem;
+    padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 4vw, 3rem);
+}
+
+.hero h1 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: #fff;
+}
+
+.hero p {
+    margin: 0;
+    max-width: 38rem;
+    font-size: clamp(1rem, 1.6vw, 1.15rem);
+    color: var(--foam);
+}
+
+.hero em,
+.hero i {
+    color: var(--sand);
+}
+
+#btnBookNow {
+    margin-top: 0.5rem;
+    padding: 0.85rem 2rem;
+    font-size: 1.05rem;
+    color: #fff;
+    background: var(--hibiscus);
+    border: 2px solid var(--hibiscus);
+}
+
+#btnBookNow:hover {
+    background: var(--hibiscus-dark);
+    border-color: var(--hibiscus-dark);
+}
+
+/* ---------- Accessibility ---------- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--sand);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    nav {
+        flex-wrap: wrap;
+    }
+
+    nav h1 {
+        margin-right: 0;
+    }
+
+    nav ul {
+        width: 100%;
+    }
+
+    /* Search box takes a full row; buttons sit beside each other below it */
+    nav li:has(#locationInput) {
+        flex: 1 1 100%;
+    }
+
+    #locationInput {
+        width: 100%;
+    }
+
+    body {
+        background-attachment: scroll; /* fixed backgrounds are janky on mobile */
+    }
+}
